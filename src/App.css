@@ -8,6 +8,7 @@
     "content content sidebar";
   min-height: 100vh;
   padding: 0 10rem;
+  background-color: #bababa;
 }
 
 header {
@@ -44,6 +45,7 @@ header .session {
 }
 
 .content {
+  background-color: white;
   grid-area: content;
   padding: 2rem;
 }
