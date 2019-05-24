@@ -1,4 +1,3 @@
-$ circleci config process .circleci/config.yml
 # Orb 'cypress-io/cypress@1' resolved to 'cypress-io/cypress@1.1.0'
 version: 2
 jobs:
