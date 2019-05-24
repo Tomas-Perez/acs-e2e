@@ -8,7 +8,7 @@ import LoginForm from "./LoginForm";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [loginError, setLoginError] = useState(false);
   const onRegisterSubmit = (user) => {
     setUsers([...users, user]);
