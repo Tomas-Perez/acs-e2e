@@ -1,4 +1,4 @@
-form {
+.app-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -7,17 +7,17 @@ form {
   border-radius: 10px;
 }
 
-label {
+.app-form label {
   align-self: flex-start;
   color: black;
 }
 
-div {
+.app-form div {
   display: flex;
   flex-direction: column;
 }
 
-button {
+.app-form button {
   border: none;
   background-color: #345ce0;
   border-radius: 20px;
@@ -30,6 +30,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.app-form button:hover {
   filter: brightness(150%);
 }

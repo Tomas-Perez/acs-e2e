@@ -23,8 +23,23 @@ header {
 }
 
 .sidebar {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   color: white;
   grid-area: sidebar;
   padding: 1rem;
   background-color: #101010;
+}
+
+.blog-title {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  text-align: center;
+  color: black;
+  background-color: #e6e6e6;
+}
+
+.blog-title h3 {
+  margin: 0;
 }

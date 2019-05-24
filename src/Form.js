@@ -7,15 +7,11 @@ const Form = ({onSubmit}) => {
   const [password, setPassword] = useState('');
 
   return (
-    <form onSubmit={(e) => {
+    <form className='app-form' onSubmit={(e) => {
       e.preventDefault();
-      console.log({
-        username,
-        email,
-        password
-      });
+      onSubmit({username, email, password});
     }}>
-      <div>
+      <div className='input-div'>
         <label htmlFor='username'>Username</label>
         <input
           id='username'
@@ -24,7 +20,7 @@ const Form = ({onSubmit}) => {
           onChange={(event) => setUsername(event.target.value)}
         />
       </div>
-      <div>
+      <div className='input-div'>
         <label htmlFor='email'>Email</label>
         <input
           id='email'
@@ -34,7 +30,7 @@ const Form = ({onSubmit}) => {
           onChange={(event) => setEmail(event.target.value)}
         />
       </div>
-      <div>
+      <div className='input-div'>
         <label htmlFor='password'>Password</label>
         <input
           id='password'
@@ -44,7 +40,7 @@ const Form = ({onSubmit}) => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <button>
+      <button className='form-button'>
         Submit
       </button>
     </form>
