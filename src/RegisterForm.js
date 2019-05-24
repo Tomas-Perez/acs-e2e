@@ -14,6 +14,7 @@ const RegisterForm = ({onSubmit}) => {
       <div className='input-div'>
         <label htmlFor='username'>Username</label>
         <input
+          data-cy='register-username-input'
           id='username'
           placeholder='username'
           required
@@ -23,6 +24,7 @@ const RegisterForm = ({onSubmit}) => {
       <div className='input-div'>
         <label htmlFor='email'>Email</label>
         <input
+          data-cy='register-email-input'
           id='email'
           type='email'
           placeholder='email'
@@ -33,6 +35,7 @@ const RegisterForm = ({onSubmit}) => {
       <div className='input-div'>
         <label htmlFor='password'>Password</label>
         <input
+          data-cy='register-password-input'
           id='password'
           placeholder='password'
           type='password'
@@ -40,7 +43,7 @@ const RegisterForm = ({onSubmit}) => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <button className='form-button'>
+      <button data-cy='register-btn' className='form-button'>
         Submit
       </button>
     </form>

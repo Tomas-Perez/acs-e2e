@@ -48,8 +48,8 @@ const App = () => {
           <div className='session'>
             {
               user ?
-                <button onClick={onLogout}>Logout</button> :
-                <button onClick={onLogin}>Login</button>
+                <button data-cy='logout-button' onClick={onLogout}>Logout</button> :
+                <button data-cy='login-button' onClick={onLogin}>Login</button>
             }
           </div>
         </header>

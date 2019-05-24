@@ -13,6 +13,7 @@ const LoginForm = ({onSubmit, error}) => {
       <div className='input-div'>
         <label htmlFor='email'>Email</label>
         <input
+          data-cy='email-input'
           id='email'
           type='email'
           placeholder='email'
@@ -23,6 +24,7 @@ const LoginForm = ({onSubmit, error}) => {
       <div className='input-div'>
         <label htmlFor='password'>Password</label>
         <input
+          data-cy='password-input'
           id='password'
           placeholder='password'
           type='password'
@@ -30,12 +32,12 @@ const LoginForm = ({onSubmit, error}) => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <div className='input-div error-message'>
+      <div data-cy='login-error-message' className='input-div error-message'>
         <div style={{opacity: error ? 1 : 0}}>
           Wrong email or password
         </div>
       </div>
-      <button className='form-button'>
+      <button data-cy='login-submit' className='form-button'>
         Submit
       </button>
     </form>
