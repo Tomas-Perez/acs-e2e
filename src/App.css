@@ -11,10 +11,36 @@
 }
 
 header {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   place-content: center center;
   grid-area: header;
   background-color: #345ce0;
+}
+
+header h1 {
+  grid-column: 2;
+  text-align: center;
+}
+
+header .session {
+  grid-column: 3;
+  align-self: center;
+  justify-self: end;
+  padding-right: 2rem;
+}
+
+.session button {
+  border: none;
+  background-color: white;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  color: #345ce0;
+  height: 50px;
+  width: min-content;
+  padding: 0 1.5rem;
+  align-self: center;
+  cursor: pointer;
 }
 
 .content {
