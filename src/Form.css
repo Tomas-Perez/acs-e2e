@@ -1,0 +1,35 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #e6e6e6;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+label {
+  align-self: flex-start;
+  color: black;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background-color: #345ce0;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  color: white;
+  height: 50px;
+  width: min-content;
+  padding: 0 1.5rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(150%);
+}
