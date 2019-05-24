@@ -69,3 +69,7 @@ header .session {
 .blog-title h3 {
   margin: 0;
 }
+
+.error-message {
+  color: red;
+}

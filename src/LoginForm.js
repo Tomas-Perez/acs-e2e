@@ -1,25 +1,15 @@
 import React, {useState} from 'react';
 import './Form.css';
 
-const Form = ({onSubmit}) => {
-  const [username, setUsername] = useState('');
+const LoginForm = ({onSubmit, error}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <form className='app-form' onSubmit={(e) => {
       e.preventDefault();
-      onSubmit({username, email, password});
+      onSubmit({email, password});
     }}>
-      <div className='input-div'>
-        <label htmlFor='username'>Username</label>
-        <input
-          id='username'
-          placeholder='username'
-          required
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </div>
       <div className='input-div'>
         <label htmlFor='email'>Email</label>
         <input
@@ -40,6 +30,11 @@ const Form = ({onSubmit}) => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
+      <div className='input-div error-message'>
+        <div style={{opacity: error ? 1 : 0}}>
+          Wrong email or password
+        </div>
+      </div>
       <button className='form-button'>
         Submit
       </button>
@@ -47,4 +42,4 @@ const Form = ({onSubmit}) => {
   );
 };
 
-export default Form;
+export default LoginForm;
