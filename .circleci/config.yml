@@ -4,9 +4,9 @@ orbs:
 workflows:
   build:
     jobs:
-      steps:
-        - run:
-            command: npm install
+      - cypress/install:
+          pre-steps:
+            - run: npm install
       - cypress/run:
           start: npm start
           wait-on: 'http://localhost:4200'
