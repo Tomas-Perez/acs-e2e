@@ -1,14 +1,15 @@
-# to use orbs, must use version >= 2.1
 version: 2.1
 orbs:
-  # import Cypress orb by specifying an exact version x.y.z
-  # or the latest version 1.x.x
   cypress: cypress-io/cypress@1
 workflows:
   build:
     jobs:
-      # checks out code, installs npm dependencies
-      # and runs all Cypress tests and records results on Cypress Dashboard
-      # cypress/run job comes from "cypress" orb imported above
+      - cypress/install:
+          build: npm run build
       - cypress/run:
+          requires:
+            - cypress/install
           record: true
+          parallel: true
+          parallelism: 3
+          group: 3x
