@@ -10,8 +10,8 @@ jobs:
     - restore_cache:
         keys:
         - cache-{{ .Branch }}-{{ checksum "package.json" }}
-	-run:
-		command: npm install
+    - run:
+        command: npm install
     - run:
         name: Npm CI
         command: npm ci
