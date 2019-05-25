@@ -1,39 +1,14 @@
-# Orb 'cypress-io/cypress@1' resolved to 'cypress-io/cypress@1.1.0'
-version: 2
-jobs:
-  cypress/run:
-    docker:
-    - image: cypress/base:10
-    parallelism: 1
-    steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - cache-{{ .Branch }}-{{ checksum "package.json" }}
-    - run:
-        command: npm install
-    - run:
-        name: Npm CI
-        command: npm ci
-    - run:
-        command: npx cypress verify
-    - save_cache:
-        key: cache-{{ .Branch }}-{{ checksum "package.json" }}
-        paths:
-        - ~/.npm
-        - ~/.cache
-    - persist_to_workspace:
-        root: ~/
-        paths:
-        - project
-        - .cache/Cypress
-    - attach_workspace:
-        at: ~/
-    - run:
-        name: Run Cypress tests
-        command: 'npx cypress run'
+# to use orbs, must use version >= 2.1
+version: 2.1
+orbs:
+  # import Cypress orb by specifying an exact version x.y.z
+  # or the latest version 1.x.x
+  cypress: cypress-io/cypress@1
 workflows:
   build:
     jobs:
-    - cypress/run
-  version: 2
+      # checks out code, installs npm dependencies
+      # and runs all Cypress tests and records results on Cypress Dashboard
+      # cypress/run job comes from "cypress" orb imported above
+      - cypress/run:
+          record: true
