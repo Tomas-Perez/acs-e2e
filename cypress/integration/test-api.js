@@ -1,23 +1,45 @@
 context('test Group Chat API', () => {
 
+  const baseUrl = '172.22.48.148:1234';
+
   const addUser = user =>
-    cy.request('POST', '/users', user);
+    cy.request('POST', baseUrl + '/users', user);
 
   const getUser = userId =>
-    cy.request(`/users/${userId}`);
+    cy.request(baseUrl + `/users/${userId}`);
 
   const addGroup = group =>
-    cy.request('POST', '/groups', group);
+    cy.request('POST', baseUrl + '/groups', group);
 
   const getGroup = groupId =>
-    cy.request(`/groups/${groupId}`);
+    cy.request(baseUrl + `/groups/${groupId}`);
 
   const putUserInGroup = (groupId, userID) =>
-    cy.request('PUT', `/groups/${groupId}/add/${userID}`);
+    cy.request('PUT', baseUrl + `/groups/${groupId}/add/${userID}`);
+
+  const deleteGroup = groupId =>
+    cy.request('DELETE', baseUrl + `/groups/${groupId}`);
+
+  const deleteUser = userId =>
+    cy.request('DELETE', baseUrl + `/users/${userId}`);
+
 
   let groupOwnerId;
 
   let groupId;
+
+  let newUserId;
+
+  const reset = () => {
+    deleteGroup(groupId);
+    deleteUser(groupOwnerId);
+    deleteUser(newUserId);
+  };
+
+
+  // before(reset);
+
+  after(reset);
 
   it('adds a User', () => {
     const user = {
@@ -60,15 +82,13 @@ context('test Group Chat API', () => {
       });
   });
 
-  it('adds a User to a Group', () => {
+  /*it('adds a User to a Group', () => {
     const newUser = {
       name: "Gianni",
       email: "gianni@mail.com",
       password: "password123",
       confirmPassword: "password123"
     };
-
-    let newUserId;
 
     addUser(newUser)
       .then((response) => {
@@ -83,7 +103,7 @@ context('test Group Chat API', () => {
               })
           })
       });
-  })
+  })*/
 
 
 });
