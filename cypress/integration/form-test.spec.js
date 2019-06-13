@@ -10,7 +10,7 @@ context('Form', () => {
       .click({force: true});
 
     cy.get('[data-cy=email-input]')
-      .type('fake@email.com').should('have.value', 'fake@email.com')
+      .type('fake@email.com').should('have.value', 'fake@email.com');
 
     cy.get('[data-cy=password-input]')
       .type('password').should('have.value', 'password');
@@ -22,13 +22,13 @@ context('Form', () => {
       .should('be.visible')
   });
 
-  it(' type into register form inputs', () => {
+  /*it(' type into register form inputs', () => {
 
     cy.get('[data-cy=register-username-input]')
       .type('giansco').should('have.value', 'giansco');
 
     cy.get('[data-cy=register-email-input]')
-      .type('fake@email.com').should('have.value', 'fake@email.com')
+      .type('fake@email.com').should('have.value', 'fake@email.com');
 
     cy.get('[data-cy=register-password-input]')
       .type('password').should('have.value', 'password');
@@ -37,7 +37,7 @@ context('Form', () => {
       .click({force: true});
 
     cy.contains('Welcome giansco').should('be.visible')
-  });
+  });*/
 
   it(' register - logout - login', () => {
 
@@ -45,7 +45,7 @@ context('Form', () => {
       .type('giansco').should('have.value', 'giansco');
 
     cy.get('[data-cy=register-email-input]')
-      .type('fake@email.com').should('have.value', 'fake@email.com');
+      .type('real@email.com').should('have.value', 'real@email.com');
 
     cy.get('[data-cy=register-password-input]')
       .type('password').should('have.value', 'password');
@@ -64,7 +64,7 @@ context('Form', () => {
       .click({force: true});
 
     cy.get('[data-cy=email-input]')
-      .type('fake@email.com').should('have.value', 'fake@email.com');
+      .type('real@email.com').should('have.value', 'real@email.com');
 
     cy.get('[data-cy=password-input]')
       .type('password').should('have.value', 'password');
