@@ -1,6 +1,6 @@
 context('test Group Chat API', () => {
 
-  const baseUrl = '172.22.48.148:1234';
+  const baseUrl = 'localhost:1234';
 
   const addUser = user =>
     cy.request('POST', baseUrl + '/users', user);
