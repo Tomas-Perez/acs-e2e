@@ -30,6 +30,10 @@ context('test Group Chat API', () => {
 
   let newUserId;
 
+  let userAdded;
+
+  let groupAdded;
+
   const reset = () => {
     deleteGroup(groupId);
     deleteUser(groupOwnerId);
@@ -43,8 +47,8 @@ context('test Group Chat API', () => {
 
   it('adds a User', () => {
     const user = {
-      name: "Name",
-      email: "mail@mail.com",
+      name: "User1",
+      email: "user17@mail.com",
       password: "password",
       confirmPassword: "password"
     };
@@ -52,14 +56,16 @@ context('test Group Chat API', () => {
     addUser(user)
       .then((response) => {
         // response.body is automatically serialized into JSON
-        groupOwnerId = response.body.id;
+        groupOwnerId = response.body;
+        userAdded = {
+          id: groupOwnerId,
+          name: user.name,
+          email: user.email,
+          password: user.password
+        }
         getUser(groupOwnerId)
-          .its('body')
-          .then( (res) => {
-            res.name.should('deep.eq', user.name);
-            res.email.should('deep.eq', user.name);
-            res.password.should('deep.eq', user.name);
-          })
+        .its('body')
+        .should('deep.eq', JSON.stringify(userAdded));
       });
   });
 
@@ -72,17 +78,20 @@ context('test Group Chat API', () => {
     addGroup(group)
       .then((response) => {
         // response.body is automatically serialized into JSON
-        groupId = response.body.id;
+        groupId = response.body;
+        groupAdded = {
+          id: groupId,
+          name: "Group Name",
+          owner: userAdded,
+          members: [userAdded]
+        };
         getGroup(groupId)
           .its('body')
-          .then( (res) => {
-            res.name.should('deep.eq', group.name);
-            res.owner.id.should('deep.eq', group.owner);
-          })
+          .should('deep.eq', JSON.stringify(groupAdded))
       });
   });
 
-  /*it('adds a User to a Group', () => {
+  it('adds a User to a Group', () => {
     const newUser = {
       name: "Gianni",
       email: "gianni@mail.com",
@@ -93,17 +102,25 @@ context('test Group Chat API', () => {
     addUser(newUser)
       .then((response) => {
         // response.body is automatically serialized into JSON
-        newUserId = response.body.id;
+        newUserId = response.body;
+
+        const newUserAdded = {
+          id: newUserId,
+          name: newUser.name,
+          email: newUser.email,
+          password: newUser.password,
+        };
+
+        groupAdded.members.push(newUserAdded);
 
         putUserInGroup(groupId, newUserId)
           .then((res) => {
-            getGroup(res.body.id)
-              .then((updatedGroup) => {
-                updatedGroup.members.eq(1).its('id').should('deep.eq', newUserId)
-              })
+            getGroup(groupId)
+            .its('body')
+            .should('deep.eq', JSON.stringify(groupAdded))
           })
       });
-  })*/
+  })
 
 
 });
